@@ -5,4 +5,4 @@ Based on [Vincenzo Rossi](https://www.codeproject.com/script/Membership/View.asp
 * Updated solution to VisualStudio 2017
 * Updated solution to use .NET 4
 * Signed the assembly with a strong name key file
-* Replaced Icons with icons from and based off the VS2017 Image Library
+* Replaced icons with icons from and based off the VS2017 Image Library
