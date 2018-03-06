@@ -1,5 +1,7 @@
 # DgvFilterPopup
 Based on the original work of [Vincenzo Rossi](https://www.codeproject.com/script/Membership/View.aspx?mid=3713668)'s [DgvFilterPopup](https://www.codeproject.com/Articles/33786/DataGridView-Filter-Popup).
+* [License](LICENSE.md)
+* [Changelog](CHANGELOG.md)
 
 DataGridViewColumnSelector
 ## Introduction
