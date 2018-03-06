@@ -3,7 +3,10 @@ Based on the original work of [Vincenzo Rossi](https://www.codeproject.com/scrip
 * [License](LICENSE.md)
 * [Changelog](CHANGELOG.md)
 
-DataGridViewColumnSelector
+---
+
+![picture alt](Images/Overview.png)
+
 ## Introduction
 I was looking for an easy and flexible grid filtering mechanism to use with new and old applications. I've found no preexisting solutions that fully satisfy my needs. So, I decided to make my own filtering library. The goals I've tried to reach are:
 
@@ -24,7 +27,7 @@ That's all. Your grid is now able to filter the column values. Right-click on th
 ## Class Architecture
 The three main classes are exposed in the following diagram:
 
-DataGridViewColumnSelector
+![picture alt](Images/BasicDiagram.png)
 
 ### The DgvFilterManager Class
 The `DgvFilterManager` class doesn't provide a user interface. Its work is to coordinate the interaction between the `DataGridView` and the visual filtering elements. When you assign a `DataGridView` to a `DgvFilterManager`, the latter attaches some handlers to respond to right click on column headers and to perform some custom painting on the grid. When the user right clicks a column header, the `DgvFilterManager` shows a popup near the column. This popup is a control that serves as a host for other controls, one for each column. Only one of these child controls is visible at a time, based on the clicked column. We have one filter host control and many column filter child controls.
@@ -54,30 +57,30 @@ The purpose of a *column filter* control is to contain visual elements, allowing
 You should override `OnFilterExpressionBuilding` to provide a filter expression construction logic and to set the values of the `FilterExpression` and `FilterCaption` properties.
 
 ## Standard Implementations
-DataGridViewColumnSelector
+![picture alt](Images/Hierarchy.png)
 
 ### The DgvFilterHost Class
-DataGridViewColumnSelector
+![picture alt](Images/FilterHost.png)
 
 This is the standard implementation of `DgvBaseFilterHost`. This class does nothing special. Most of the logic is in its base class. It just contains visual elements such as buttons and graphics, and a panel acting as the client area for child *column filter* controls.
 
 ### The DgvTextBoxColumnFilter Class
-DataGridViewColumnSelector
+![picture alt](Images/TextBox.png)
 
 This is one of the `DgvBaseColumnFilter` standard implementations. It's composed of a combobox containing a list of operators and a textbox in which to type the value of the filter. This *column filter* is used by default with DataGridViewTextBoxColumns, except when the bound data type is `DateTime`. The list of available operators is different between string types and numeric types.
 
 ### The DgvTextBoxColumnFilter Class
-DataGridViewColumnSelector
+![picture alt](Images/CheckBox.png)
 
 A standard implementation for the filtering of checkbox columns. The only available operators are the equal and the general *null* and *not null* operators.
 
 ### The DgvDateColumnFilter Class
-DataGridViewColumnSelector
+![picture alt](Images/Date.png)
 
 A standard implementation for the filtering of date columns.
 
 ### The DgvComboBoxColumnFilter Class
-DataGridViewColumnSelector
+![picture alt](Images/ComboBox.png)
 
 A standard implementation for the filtering of combobox columns. By default, on textbox columns, the filter manager uses `DgvTextBoxColumnFilter` instances. However, you can force an instance of `DgvComboBoxColumnFilter` on such columns. In this case, the `DgvComboBoxColumnFilter` instance automatically creates a distinct list of values from the column data. You should do an explicit call to the `RefreshValues()` method when the underlying data changes.
 
@@ -126,7 +129,7 @@ This manager event allows you to customize the filter host position when popped 
     }
 
 #### FilterExpressionBuilding
-DataGridViewColumnSelector
+![picture alt](Images/Customizing.png)
 
 Using the `DgvBaseColumnFilter` event, you can customize the filter expression building process. In the following code example, we add new operators and then manage them in the event handler. The `FilterExpression` and `FilterCaption` properties will be used by the manager to build the whole filter and to set the column caption.
 
@@ -165,7 +168,7 @@ Using the `DgvBaseColumnFilter` event, you can customize the filter expression b
 A more powerful way to customize your filters is through subclassing. You should think of the proposed standard implementations of `DgvBaseFilterHost` and `DgvBaseColumnFilter` as just some possible implementations.
 
 #### Creating Your Own Host
-DataGridViewColumnSelector
+![picture alt](Images/CustomHost.png)
 
 As said above, derive from `DgvBaseFilterHost` and provide some visual elements. Add a container within your control to host the child filter controls, and return it by an override of the `FilterClientArea` property. The base class provides the necessary logic to cooperate with the manager, and provides some facilities helping to position the child filter controls and to adjust the host size. Another facility simplifies the creation of transparent skinned hosts, thanks to the method `BitmapToRegion` I've found in a very nice article by John O'Byrne.
 
@@ -176,7 +179,7 @@ As said above, derive from `DgvBaseFilterHost` and provide some visual elements.
     fm.DataGridView = dataGridView1;
 
 #### Creating Your Own Column Filters
-DataGridViewColumnSelector
+![picture alt](Images/CustomFilter.png)
 
 Creating new column filters is simple. Derive from `DgvBaseColumnFilter` and add your visual elements. Override `OnFilterExpressionBuilding` to provide filter building logic and, using `DataView.RowFilter` rules, assign a value to the `FilterExpression` property and a title to the `FilterCaption` property.
 
@@ -185,20 +188,20 @@ Remember that the filter is applied when the user clicks on the *OK* button of t
 ## New Filters
 To satisfy some requests, in the 1.1.0.0 update, I've introduced three new filter implementations:
 
-DataGridViewColumnSelector
+![picture alt](Images/ExtensionsDiagram.png)
 
 ### The DgvMonthYearColumnFilter Class
-DataGridViewColumnSelector
+![picture alt](Images/DgvMonthYearColumnFilter.png)
 
 This filter allows the user to select a month and a year. By setting the `YearMin` and `YearMax` properties, you can control the shown years range. Month names default to English, but you may provide culture-specific names by once setting the value of the static property `MonthCsvList` with a comma separated list of month names.
 
 ### The DgvNumRangeColumnFilter Class
-DataGridViewColumnSelector
+![picture alt](Images/DgvNumRangeColumnFilter.png)
 
 Use this filter to allow the user to specify a range filter on numeric columns.
 
 ### The DgvDateRangeColumnFilter Class
-DataGridViewColumnSelector
+![picture alt](Images/DgvDateRangeColumnFilter.png)
 
 Use this filter to allow the user to specify a range filter on date columns.
 
