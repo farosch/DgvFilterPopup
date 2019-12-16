@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 
-namespace DgvFilterPopup {
+namespace DgvFilterPopup
+{
 
 
 
@@ -18,33 +17,35 @@ namespace DgvFilterPopup {
     /// <summary>
     /// Provides data for a column filter event. 
     /// </summary>
-    public class ColumnFilterEventArgs : EventArgs {
+    public class ColumnFilterEventArgs : EventArgs
+    {
 
 
         #region PRIVATE FIELDS
-                
+
         private DataGridViewColumn mColumn;
         private DgvBaseColumnFilter mColumnFilter;
         private bool mHandled;
 
 
-        #endregion 
-        
-        
+        #endregion
+
+
         #region PROPERTIES 
 
 
         /// <summary>
         /// Gets the DataGridView column involved in the event.
         /// </summary>
-        public DataGridViewColumn Column { get { return mColumn; }}
+        public DataGridViewColumn Column { get { return mColumn; } }
 
 
         /// <summary>
         /// Gets or sets the column filter instance.
         /// </summary>
         /// <value>A column filter instance.</value>
-        public DgvBaseColumnFilter ColumnFilter {
+        public DgvBaseColumnFilter ColumnFilter
+        {
             get { return mColumnFilter; }
             set { mColumnFilter = value; }
         }
@@ -53,7 +54,8 @@ namespace DgvFilterPopup {
         /// Gets or sets a value indicating whether this <see cref="ColumnFilterEventArgs"/> is handled.
         /// </summary>
         /// <value><c>true</c> if handled; otherwise, <c>false</c>.</value>
-        public bool Handled {
+        public bool Handled
+        {
             get { return mHandled; }
             set { mHandled = value; }
         }
@@ -65,7 +67,8 @@ namespace DgvFilterPopup {
         /// </summary>
         /// <param name="Column">The DstaGridView column.</param>
         /// <param name="ColumnFilter">The column filter instance.</param>
-        public ColumnFilterEventArgs(DataGridViewColumn Column, DgvBaseColumnFilter ColumnFilter) {
+        public ColumnFilterEventArgs(DataGridViewColumn Column, DgvBaseColumnFilter ColumnFilter)
+        {
             mColumn = Column;
             mColumnFilter = ColumnFilter;
             mHandled = Handled;

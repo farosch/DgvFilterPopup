@@ -1,21 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using DgvFilterPopup;
+using System;
+using System.ComponentModel;
+using System.Drawing;
 
-namespace DgvFilterPopupDemo {
-    public partial class Sample2 : DgvFilterPopupDemo.Sample0 {
-        public Sample2() {
+namespace DgvFilterPopupDemo
+{
+    public partial class Sample2 : DgvFilterPopupDemo.Sample0
+    {
+        public Sample2()
+        {
             InitializeComponent();
         }
 
         DgvDateColumnFilter OrderDate;
 
-        private void Sample2_Load(object sender, EventArgs e) {
+        private void Sample2_Load(object sender, EventArgs e)
+        {
             InitGrid();
 
             DgvFilterManager fm = new DgvFilterManager
@@ -39,9 +39,11 @@ namespace DgvFilterPopupDemo {
 
         }
 
-        void OrderDate_FilterExpressionBuilding(object sender, CancelEventArgs e) {
+        void OrderDate_FilterExpressionBuilding(object sender, CancelEventArgs e)
+        {
             int index = OrderDate.ComboBoxOperator.SelectedIndex;
-            if (index < 3) { // the first 3 are the new operators
+            if (index < 3)
+            { // the first 3 are the new operators
                 int year = (DateTime.Today.Year - index);
                 OrderDate.FilterExpression = $"(OrderDate>='{year.ToString()}-1-1' AND OrderDate<='{year.ToString()}-12-31') ";
                 OrderDate.FilterCaption = $"{OrderDate.OriginalDataGridViewColumnHeaderText}\n = year {year.ToString()}";

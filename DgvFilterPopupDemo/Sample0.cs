@@ -1,22 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using System.Data;
 using System.Data.OleDb;
-using DgvFilterPopup;
+using System.Windows.Forms;
 
-namespace DgvFilterPopupDemo {
-    public partial class Sample0 : Form {
+namespace DgvFilterPopupDemo
+{
+    public partial class Sample0 : Form
+    {
 
 
-        public Sample0() {
+        public Sample0()
+        {
             InitializeComponent();
         }
 
-        public DataTable GetData(string strSQL) {
+        public DataTable GetData(string strSQL)
+        {
             OleDbDataAdapter DataAdapter = new OleDbDataAdapter(strSQL, Properties.Settings.Default.SampleDBConnectionString);
             DataTable dtable = new DataTable();
             DataAdapter.Fill(dtable);
@@ -24,7 +22,8 @@ namespace DgvFilterPopupDemo {
             return dtable;
         }
 
-        public void InitGrid() {
+        public void InitGrid()
+        {
             DataGridViewComboBoxColumn EmployeeID = (DataGridViewComboBoxColumn)dataGridView1.Columns["EmployeeID"];
             EmployeeID.DataPropertyName = "EmployeeID";
             EmployeeID.ValueMember = "EmployeeID";

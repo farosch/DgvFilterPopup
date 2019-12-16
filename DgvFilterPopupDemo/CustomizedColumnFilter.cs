@@ -1,5 +1,4 @@
 using DgvFilterPopup;
-using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -11,25 +10,29 @@ namespace DgvFilterPopupDemo
 
         Button mLastClickedButton;
 
-        public CustomizedColumnFilter() {
+        public CustomizedColumnFilter()
+        {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, System.EventArgs e) {
+        private void Button_Click(object sender, System.EventArgs e)
+        {
             mLastClickedButton = ((Button)sender);
             // call the filter expression building
             FilterExpressionBuild();
         }
 
-        protected override void OnFilterExpressionBuilding(object sender, CancelEventArgs e) {
+        protected override void OnFilterExpressionBuilding(object sender, CancelEventArgs e)
+        {
             if (mLastClickedButton == null) return;
             string ColName = this.DataGridViewColumn.DataPropertyName;
             string btnText = mLastClickedButton.Text;
             FilterCaption = OriginalDataGridViewColumnHeaderText + "\n = " + btnText;
 
-            switch (btnText) {
+            switch (btnText)
+            {
                 case "A...D":
-                    FilterExpression = "(" + ColName + ">='A' AND "+ColName+"<='DZ')";
+                    FilterExpression = "(" + ColName + ">='A' AND " + ColName + "<='DZ')";
                     break;
                 case "E...H":
                     FilterExpression = "(" + ColName + ">='E' AND " + ColName + "<='HZ')";

@@ -1,22 +1,25 @@
+using DgvFilterPopup;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using DgvFilterPopup;
 
 
 namespace DgvFilterPopupDemo
 {
-    public partial class CustomizedFilterHost : DgvBaseFilterHost {
-        public CustomizedFilterHost() {
+    public partial class CustomizedFilterHost : DgvBaseFilterHost
+    {
+        public CustomizedFilterHost()
+        {
             InitializeComponent();
-            this.Region = BitmapToRegion((Bitmap)this.BackgroundImage,Color.FromArgb(255, 0, 0));
+            this.Region = BitmapToRegion((Bitmap)this.BackgroundImage, Color.FromArgb(255, 0, 0));
             CurrentColumnFilterChanged += new EventHandler(CloudFilterHost_CurrentColumnFilterChanged);
             lblDelete.BackColor = Color.Transparent;
             lblDeleteAll.BackColor = Color.Transparent;
             lblOK.BackColor = Color.Transparent;
         }
 
-        void CloudFilterHost_CurrentColumnFilterChanged(object sender, EventArgs e) {
+        void CloudFilterHost_CurrentColumnFilterChanged(object sender, EventArgs e)
+        {
             label1.Text = CurrentColumnFilter.OriginalDataGridViewColumnHeaderText;
         }
 
@@ -29,22 +32,26 @@ namespace DgvFilterPopupDemo
 
         public override Control FilterClientArea
         {
-            get {
+            get
+            {
                 return panel1;
             }
         }
 
-        private void lblDelete_Click(object sender, EventArgs e) {
+        private void lblDelete_Click(object sender, EventArgs e)
+        {
             FilterManager.ActivateFilter(false);
             Popup.Close();
         }
 
-        private void lblDeleteAll_Click(object sender, EventArgs e) {
+        private void lblDeleteAll_Click(object sender, EventArgs e)
+        {
             FilterManager.ActivateAllFilters(false);
             Popup.Close();
         }
 
-        private void lblOK_Click(object sender, EventArgs e) {
+        private void lblOK_Click(object sender, EventArgs e)
+        {
             FilterManager.ActivateFilter(true);
             Popup.Close();
         }
