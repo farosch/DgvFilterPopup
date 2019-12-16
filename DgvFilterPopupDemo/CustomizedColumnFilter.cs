@@ -1,14 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
 using DgvFilterPopup;
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 
-namespace DgvFilterPopupDemo {
-    public partial class CustomizedColumnFilter : DgvBaseColumnFilter {
+namespace DgvFilterPopupDemo
+{
+
+    public partial class CustomizedColumnFilter : DgvBaseColumnFilter
+    {
 
         Button mLastClickedButton;
 
@@ -16,7 +15,7 @@ namespace DgvFilterPopupDemo {
             InitializeComponent();
         }
 
-        private void button_Click(object sender, EventArgs e) {
+        private void Button_Click(object sender, System.EventArgs e) {
             mLastClickedButton = ((Button)sender);
             // call the filter expression building
             FilterExpressionBuild();

@@ -1,3 +1,6 @@
+* **1.3.0.0 (16 Dec 2019)**
+    * Ported solution to .NET Core
+    * Updated solution to VisualStudio 2019
 * **1.2.0.0 (25 Feb 2018)**
     * Updated solution to VisualStudio 2017
     * Updated solution to use .NET 4

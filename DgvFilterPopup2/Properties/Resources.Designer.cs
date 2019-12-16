@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DgvFilterPopupDemo.Properties {
+namespace DgvFilterPopup2.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace DgvFilterPopupDemo.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DgvFilterPopupDemo.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DgvFilterPopup2.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,12 +61,42 @@ namespace DgvFilterPopupDemo.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static System.Drawing.Bitmap Studio {
+        internal static byte[] Filter_16x {
             get {
-                object obj = ResourceManager.GetObject("Studio", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("Filter_16x", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StatusOK_16x {
+            get {
+                object obj = ResourceManager.GetObject("StatusOK_16x", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StopFilter_16x {
+            get {
+                object obj = ResourceManager.GetObject("StopFilter_16x", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] StopFilters_16x {
+            get {
+                object obj = ResourceManager.GetObject("StopFilters_16x", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

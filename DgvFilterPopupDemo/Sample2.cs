@@ -18,8 +18,10 @@ namespace DgvFilterPopupDemo {
         private void Sample2_Load(object sender, EventArgs e) {
             InitGrid();
 
-            DgvFilterManager fm = new DgvFilterManager();
-            fm.DataGridView = dataGridView1; //after this line, column filters are created
+            DgvFilterManager fm = new DgvFilterManager
+            {
+                DataGridView = dataGridView1 //after this line, column filters are created
+            };
 
             // Get the created column filter for OrderDate column
             OrderDate = ((DgvDateColumnFilter)fm["OrderDate"]);
@@ -41,13 +43,11 @@ namespace DgvFilterPopupDemo {
             int index = OrderDate.ComboBoxOperator.SelectedIndex;
             if (index < 3) { // the first 3 are the new operators
                 int year = (DateTime.Today.Year - index);
-                OrderDate.FilterExpression = "(OrderDate>='" + year.ToString() + "-1-1' AND OrderDate<='" + year.ToString() + "-12-31') ";
-                OrderDate.FilterCaption = OrderDate.OriginalDataGridViewColumnHeaderText + "\n = year " + year.ToString();
+                OrderDate.FilterExpression = $"(OrderDate>='{year.ToString()}-1-1' AND OrderDate<='{year.ToString()}-12-31') ";
+                OrderDate.FilterCaption = $"{OrderDate.OriginalDataGridViewColumnHeaderText}\n = year {year.ToString()}";
                 e.Cancel = true;
             }
         }
-
-
     }
 }
 

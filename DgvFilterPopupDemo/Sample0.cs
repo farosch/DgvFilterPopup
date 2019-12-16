@@ -33,12 +33,7 @@ namespace DgvFilterPopupDemo {
             EmployeeID.SortMode = DataGridViewColumnSortMode.Automatic;
             dataGridView1.DataSource = GetData("SELECT * FROM Orders");
             dataGridView1.Columns["EmployeeID"].DisplayIndex = 2;
-
         }
-
-
-
-
     }
 }
 
