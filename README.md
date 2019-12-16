@@ -7,6 +7,11 @@ Based on the original work of [Vincenzo Rossi](https://www.codeproject.com/scrip
 
 ![picture alt](Images/Overview.png)
 
+## Installation
+Simply install the [nuget package](https://www.nuget.org/packages/DgvFilterPopup/): ![NuGet](https://img.shields.io/nuget/v/DgvFilterPopup?style=flat-square)
+
+    PM> Install-Package DgvFilterPopup -Version 1.3.0
+
 ## Introduction
 I was looking for an easy and flexible grid filtering mechanism to use with new and old applications. I've found no preexisting solutions that fully satisfy my needs. So, I decided to make my own filtering library. The goals I've tried to reach are:
 
