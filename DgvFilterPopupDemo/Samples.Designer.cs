@@ -39,9 +39,10 @@ namespace DgvFilterPopupDemo {
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(24, 33);
+            this.button1.Location = new System.Drawing.Point(13, 14);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(88, 27);
             this.button1.TabIndex = 0;
             this.button1.Text = "Sample1";
             this.button1.UseVisualStyleBackColor = true;
@@ -49,9 +50,10 @@ namespace DgvFilterPopupDemo {
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(24, 96);
+            this.button2.Location = new System.Drawing.Point(13, 65);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(88, 27);
             this.button2.TabIndex = 1;
             this.button2.Text = "Sample2";
             this.button2.UseVisualStyleBackColor = true;
@@ -59,9 +61,10 @@ namespace DgvFilterPopupDemo {
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(24, 161);
+            this.button3.Location = new System.Drawing.Point(13, 116);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(88, 27);
             this.button3.TabIndex = 2;
             this.button3.Text = "Sample3";
             this.button3.UseVisualStyleBackColor = true;
@@ -69,9 +72,10 @@ namespace DgvFilterPopupDemo {
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(24, 230);
+            this.button4.Location = new System.Drawing.Point(13, 170);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(88, 27);
             this.button4.TabIndex = 3;
             this.button4.Text = "Sample4";
             this.button4.UseVisualStyleBackColor = true;
@@ -80,48 +84,53 @@ namespace DgvFilterPopupDemo {
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(116, 34);
+            this.label1.Location = new System.Drawing.Point(113, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(313, 26);
+            this.label1.Size = new System.Drawing.Size(354, 30);
             this.label1.TabIndex = 4;
             this.label1.Text = "The most simple way:     new DgvFilterManager(dataGridView1);\r\nright-click each c" +
-                "olumn header to see the different types of filters.";
+    "olumn header to see the different types of filters.";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(116, 96);
+            this.label2.Location = new System.Drawing.Point(113, 65);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(315, 26);
+            this.label2.Size = new System.Drawing.Size(354, 30);
             this.label2.TabIndex = 5;
             this.label2.Text = "This sample shows how to customize a column filter using events.\r\nRight-click the" +
-                " \"OrderDate\" column header to see the effect.";
+    " \"OrderDate\" column header to see the effect.";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(116, 162);
+            this.label3.Location = new System.Drawing.Point(113, 116);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(358, 39);
+            this.label3.Size = new System.Drawing.Size(400, 45);
             this.label3.TabIndex = 6;
             this.label3.Text = "This sample shows how to force a ComboBoxColumnFilter\r\non non-combobox columns.\r\n" +
-                "Right-click the header of CustomerID, ShipVia, OrderDate, Freight columns";
+    "Right-click the header of CustomerID, ShipVia, OrderDate, Freight columns";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(116, 230);
+            this.label4.Location = new System.Drawing.Point(113, 170);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(292, 26);
+            this.label4.Size = new System.Drawing.Size(332, 30);
             this.label4.TabIndex = 7;
             this.label4.Text = "This sample shows a customized filter host with transparency\r\neffect and shows ho" +
-                "w to customize the filter host positioning.";
+    "w to customize the filter host positioning.";
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(24, 303);
+            this.button5.Location = new System.Drawing.Point(13, 223);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.Size = new System.Drawing.Size(88, 27);
             this.button5.TabIndex = 8;
             this.button5.Text = "Sample5";
             this.button5.UseVisualStyleBackColor = true;
@@ -130,39 +139,42 @@ namespace DgvFilterPopupDemo {
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(116, 303);
+            this.label5.Location = new System.Drawing.Point(113, 223);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(223, 26);
+            this.label5.Size = new System.Drawing.Size(252, 30);
             this.label5.TabIndex = 9;
             this.label5.Text = "This sample shows a customized column filter.\r\nRight-click the CustomerID column " +
-                "header.";
+    "header.";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Green;
-            this.label6.Location = new System.Drawing.Point(116, 338);
+            this.label6.Location = new System.Drawing.Point(13, 302);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(334, 78);
+            this.label6.Size = new System.Drawing.Size(376, 90);
             this.label6.TabIndex = 10;
             this.label6.Text = resources.GetString("label6.Text");
             // 
             // Samples
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 432);
+            this.ClientSize = new System.Drawing.Size(520, 403);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Samples";
             this.Text = "Samples";
             this.ResumeLayout(false);
