@@ -10,6 +10,7 @@
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/farosch/DgvFilterPopup</PackageProjectUrl>
     <Copyright>2009-2019</Copyright>
+    <Description>A flexible library to add filtering capabilities to a DataGridView</Description>
   </PropertyGroup>
 
   <ItemGroup>
