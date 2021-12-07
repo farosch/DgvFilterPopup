@@ -1,23 +1,22 @@
-using DgvFilterPopup;
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using DgvFilterPopup;
 
 namespace DgvFilterPopupDemo
 {
-
     public partial class CustomizedColumnFilter : DgvBaseColumnFilter
     {
-
-        Button mLastClickedButton;
+        private Button mLastClickedButton;
 
         public CustomizedColumnFilter()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, System.EventArgs e)
+        private void Button_Click(object sender, EventArgs e)
         {
-            mLastClickedButton = ((Button)sender);
+            mLastClickedButton = (Button)sender;
             // call the filter expression building
             FilterExpressionBuild();
         }
@@ -25,8 +24,8 @@ namespace DgvFilterPopupDemo
         protected override void OnFilterExpressionBuilding(object sender, CancelEventArgs e)
         {
             if (mLastClickedButton == null) return;
-            string ColName = this.DataGridViewColumn.DataPropertyName;
-            string btnText = mLastClickedButton.Text;
+            var ColName = DataGridViewColumn.DataPropertyName;
+            var btnText = mLastClickedButton.Text;
             FilterCaption = OriginalDataGridViewColumnHeaderText + "\n = " + btnText;
 
             switch (btnText)
@@ -50,6 +49,7 @@ namespace DgvFilterPopupDemo
                     FilterExpression = "(" + ColName + ">='U' AND " + ColName + "<='ZZ')";
                     break;
             }
+
             Active = true;
             //Apply the filter immediately
             FilterManager.RebuildFilter();

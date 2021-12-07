@@ -1,9 +1,9 @@
-using DgvFilterPopup;
 using System;
+using DgvFilterPopup;
 
 namespace DgvFilterPopupDemo
 {
-    public partial class Sample3 : DgvFilterPopupDemo.Sample0
+    public partial class Sample3 : Sample0
     {
         public Sample3()
         {
@@ -13,22 +13,21 @@ namespace DgvFilterPopupDemo
         private void Sample3_Load(object sender, EventArgs e)
         {
             InitGrid();
-            DgvFilterManager fm = new DgvFilterManager();
+            var fm = new DgvFilterManager();
 
             // Using the ColumnFilterAdding event, you may force your preferred filter,
             // BEFORE the FilterManager create the predefined filter. This event is 
             // raised for each column in the grid when you set the DataGridView property 
             // of the FilterManager.
-            fm.ColumnFilterAdding += new ColumnFilterEventHandler(fm_ColumnFilterAdding);
+            fm.ColumnFilterAdding += fm_ColumnFilterAdding;
 
             fm.DataGridView = dataGridView1; // this raises ColumnFilterAdding events
 
             // After column filters creation however, you can overwrite the created filter.
             fm["CustomerID"] = new DgvComboBoxColumnFilter();
-
         }
 
-        void fm_ColumnFilterAdding(object sender, ColumnFilterEventArgs e)
+        private void fm_ColumnFilterAdding(object sender, ColumnFilterEventArgs e)
         {
             switch (e.Column.Name)
             {
@@ -39,7 +38,5 @@ namespace DgvFilterPopupDemo
                     break;
             }
         }
-
     }
 }
-

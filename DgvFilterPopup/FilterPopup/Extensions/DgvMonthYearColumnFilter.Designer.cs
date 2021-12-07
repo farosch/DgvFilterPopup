@@ -27,36 +27,36 @@ namespace DgvFilterPopup {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.comboBoxYear = new System.Windows.Forms.ComboBox();
-            this.comboBoxMonth = new System.Windows.Forms.ComboBox();
+            this.ComboBoxYear = new System.Windows.Forms.ComboBox();
+            this.ComboBoxMonth = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // comboBoxYear
             // 
-            this.comboBoxYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxYear.FormattingEnabled = true;
-            this.comboBoxYear.Location = new System.Drawing.Point(102, 3);
-            this.comboBoxYear.Name = "comboBoxYear";
-            this.comboBoxYear.Size = new System.Drawing.Size(78, 21);
-            this.comboBoxYear.TabIndex = 3;
+            this.ComboBoxYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxYear.FormattingEnabled = true;
+            this.ComboBoxYear.Location = new System.Drawing.Point(102, 3);
+            this.ComboBoxYear.Name = "ComboBoxYear";
+            this.ComboBoxYear.Size = new System.Drawing.Size(78, 21);
+            this.ComboBoxYear.TabIndex = 3;
             // 
             // comboBoxMonth
             // 
-            this.comboBoxMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMonth.FormattingEnabled = true;
-            this.comboBoxMonth.Location = new System.Drawing.Point(3, 3);
-            this.comboBoxMonth.MaxDropDownItems = 13;
-            this.comboBoxMonth.Name = "comboBoxMonth";
-            this.comboBoxMonth.Size = new System.Drawing.Size(93, 21);
-            this.comboBoxMonth.TabIndex = 2;
+            this.ComboBoxMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxMonth.FormattingEnabled = true;
+            this.ComboBoxMonth.Location = new System.Drawing.Point(3, 3);
+            this.ComboBoxMonth.MaxDropDownItems = 13;
+            this.ComboBoxMonth.Name = "ComboBoxMonth";
+            this.ComboBoxMonth.Size = new System.Drawing.Size(93, 21);
+            this.ComboBoxMonth.TabIndex = 2;
             // 
             // DgvMonthYearColumnFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.comboBoxYear);
-            this.Controls.Add(this.comboBoxMonth);
+            this.Controls.Add(this.ComboBoxYear);
+            this.Controls.Add(this.ComboBoxMonth);
             this.Name = "DgvMonthYearColumnFilter";
             this.Size = new System.Drawing.Size(188, 27);
             this.ResumeLayout(false);
@@ -64,8 +64,5 @@ namespace DgvFilterPopup {
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox comboBoxYear;
-        private System.Windows.Forms.ComboBox comboBoxMonth;
     }
 }

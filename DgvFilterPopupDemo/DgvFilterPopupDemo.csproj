@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>netcoreapp3.1;net48</TargetFrameworks>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <LangVersion>latest</LangVersion>
     <StartupObject>DgvFilterPopupDemo.Program</StartupObject>
@@ -12,7 +12,7 @@
     <PackageProjectUrl>https://github.com/farosch/DgvFilterPopup</PackageProjectUrl>
     <Copyright>2009-2019</Copyright>
     <Description>A flexible library to add filtering capabilities to a DataGridView</Description>
-    <Platforms>AnyCPU;x64;x86</Platforms>
+    <Platforms>AnyCPU</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
