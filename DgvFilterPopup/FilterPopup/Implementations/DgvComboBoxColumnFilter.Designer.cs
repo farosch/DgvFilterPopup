@@ -23,36 +23,36 @@ namespace DgvFilterPopup {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.comboBoxOperator = new System.Windows.Forms.ComboBox();
-            this.comboBoxValue = new System.Windows.Forms.ComboBox();
+            this.ComboBoxOperator = new System.Windows.Forms.ComboBox();
+            this.ComboBoxValue = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // comboBoxOperator
             // 
-            this.comboBoxOperator.FormattingEnabled = true;
-            this.comboBoxOperator.Location = new System.Drawing.Point(3, 3);
-            this.comboBoxOperator.Name = "comboBoxOperator";
-            this.comboBoxOperator.Size = new System.Drawing.Size(49, 21);
-            this.comboBoxOperator.TabIndex = 0;
+            this.ComboBoxOperator.FormattingEnabled = true;
+            this.ComboBoxOperator.Location = new System.Drawing.Point(3, 3);
+            this.ComboBoxOperator.Name = "ComboBoxOperator";
+            this.ComboBoxOperator.Size = new System.Drawing.Size(49, 21);
+            this.ComboBoxOperator.TabIndex = 0;
             // 
             // comboBoxValue
             // 
-            this.comboBoxValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.ComboBoxValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxValue.FormattingEnabled = true;
-            this.comboBoxValue.Location = new System.Drawing.Point(58, 3);
-            this.comboBoxValue.Name = "comboBoxValue";
-            this.comboBoxValue.Size = new System.Drawing.Size(215, 21);
-            this.comboBoxValue.TabIndex = 1;
+            this.ComboBoxValue.FormattingEnabled = true;
+            this.ComboBoxValue.Location = new System.Drawing.Point(58, 3);
+            this.ComboBoxValue.Name = "ComboBoxValue";
+            this.ComboBoxValue.Size = new System.Drawing.Size(215, 21);
+            this.ComboBoxValue.TabIndex = 1;
             // 
             // DgvComboBoxColumnFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.comboBoxValue);
-            this.Controls.Add(this.comboBoxOperator);
+            this.Controls.Add(this.ComboBoxValue);
+            this.Controls.Add(this.ComboBoxOperator);
             this.Name = "DgvComboBoxColumnFilter";
             this.Size = new System.Drawing.Size(276, 30);
             this.ResumeLayout(false);
@@ -60,8 +60,5 @@ namespace DgvFilterPopup {
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox comboBoxOperator;
-        private System.Windows.Forms.ComboBox comboBoxValue;
     }
 }

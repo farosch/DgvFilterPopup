@@ -1,155 +1,165 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
 
-namespace DgvFilterPopup {
+namespace DgvFilterPopup;
+
+/// <summary>
+///     A standard <i>column filter</i> implementation for ComboBox columns.
+/// </summary>
+/// <remarks>
+///     If the <b>DataGridView</b> column to which this <i>column filter</i> is applied
+///     is not a ComboBox column, it automatically creates a distinct list of values from the bound <b>DataView</b> column.
+///     If the DataView changes, you should do an explicit call to <see cref="DgvComboBoxColumnFilter.RefreshValues" />
+///     method.
+/// </remarks>
+public partial class DgvComboBoxColumnFilter : DgvBaseColumnFilter
+{
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="DgvComboBoxColumnFilter" /> class.
+    /// </summary>
+    public DgvComboBoxColumnFilter()
+    {
+        InitializeComponent();
+        ComboBoxOperator.SelectedValueChanged += onFilterChanged;
+        ComboBoxValue.SelectedValueChanged += onFilterChanged;
+    }
+
+    /// <summary>
+    ///     Gets the ComboBox control containing the available operators.
+    /// </summary>
+    public ComboBox ComboBoxOperator { get; private set; }
 
 
     /// <summary>
-    /// A standard <i>column filter</i> implementation for ComboBox columns.
+    ///     Gets the ComboBox control containing the available values.
     /// </summary>
+    public ComboBox ComboBoxValue { get; private set; }
+
+
+    /// <summary>
+    ///     Perform filter initialitazion and raises the FilterInitializing event.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs" /> instance containing the event data.</param>
     /// <remarks>
-    /// If the <b>DataGridView</b> column to which this <i>column filter</i> is applied
-    /// is not a ComboBox column, it automatically creates a distinct list of values from the bound <b>DataView</b> column.
-    /// If the DataView changes, you should do an explicit call to <see cref="DgvComboBoxColumnFilter.RefreshValues"/> method.
+    ///     When this <i>column filter</i> control is added to the <i>column filters</i> array of the <i>filter manager</i>,
+    ///     the latter calls the <see cref="DgvBaseColumnFilter.Init" /> method which, in turn, calls this method.
+    ///     You can ovverride this method to provide initialization code or you can create an event handler and
+    ///     set the <i>Cancel</i> property of event argument to true, to skip standard initialization.
     /// </remarks>
-    public partial class DgvComboBoxColumnFilter : DgvBaseColumnFilter {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DgvComboBoxColumnFilter"/> class.
-        /// </summary>
-        public DgvComboBoxColumnFilter() {
-            InitializeComponent();
-            comboBoxOperator.SelectedValueChanged += new EventHandler(onFilterChanged);
-            comboBoxValue.SelectedValueChanged += new EventHandler(onFilterChanged);
+    protected override void OnFilterInitializing(object sender, CancelEventArgs e)
+    {
+        base.OnFilterInitializing(sender, e);
+        if (e.Cancel) return;
+        ComboBoxOperator.Items.AddRange(new object[] { "=", "<>", "= ï¿½", "<> ï¿½" });
+        ComboBoxOperator.SelectedIndex = 0;
+        if (DataGridViewColumn is DataGridViewComboBoxColumn)
+        {
+            ComboBoxValue.ValueMember = ((DataGridViewComboBoxColumn)DataGridViewColumn).ValueMember;
+            ComboBoxValue.DisplayMember = ((DataGridViewComboBoxColumn)DataGridViewColumn).DisplayMember;
+            ComboBoxValue.DataSource = ((DataGridViewComboBoxColumn)DataGridViewColumn).DataSource;
+        }
+        else
+        {
+            ComboBoxValue.ValueMember = DataGridViewColumn.DataPropertyName;
+            ComboBoxValue.DisplayMember = DataGridViewColumn.DataPropertyName;
+            RefreshValues();
         }
 
-        /// <summary>
-        /// Gets the ComboBox control containing the available operators.
-        /// </summary>
-        public ComboBox ComboBoxOperator { get { return comboBoxOperator; }}
+        FilterHost.RegisterComboBox(ComboBoxOperator);
+        FilterHost.RegisterComboBox(ComboBoxValue);
+    }
 
-        
-        /// <summary>
-        /// Gets the ComboBox control containing the available values.
-        /// </summary>
-        public ComboBox ComboBoxValue { get { return comboBoxValue; }}
+    /// <summary>
+    ///     For non-combobox columns, refreshes the list of the <b>DataView</b> values in the column.
+    /// </summary>
+    public void RefreshValues()
+    {
+        if (!(DataGridViewColumn is DataGridViewComboBoxColumn))
+        {
+            var DistinctDataTable = BoundDataView.ToTable(true, DataGridViewColumn.DataPropertyName);
+            DistinctDataTable.DefaultView.Sort = DataGridViewColumn.DataPropertyName;
+            ComboBoxValue.DataSource = DistinctDataTable;
+        }
+    }
 
 
-
-        /// <summary>
-        /// Perform filter initialitazion and raises the FilterInitializing event.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs"/> instance containing the event data.</param>
-        /// <remarks>
-        /// When this <i>column filter</i> control is added to the <i>column filters</i> array of the <i>filter manager</i>,
-        /// the latter calls the <see cref="DgvBaseColumnFilter.Init"/> method which, in turn, calls this method.
-        /// You can ovverride this method to provide initialization code or you can create an event handler and 
-        /// set the <i>Cancel</i> property of event argument to true, to skip standard initialization.
-        /// </remarks>
-        protected override void OnFilterInitializing(object sender, CancelEventArgs e) {
-            base.OnFilterInitializing(sender, e);
-            if (e.Cancel) return;
-            comboBoxOperator.Items.AddRange (new object[] { "=", "<>", "= Ø", "<> Ø" });
-            comboBoxOperator.SelectedIndex = 0;
-            if (DataGridViewColumn is DataGridViewComboBoxColumn) {
-                comboBoxValue.ValueMember = ((DataGridViewComboBoxColumn)DataGridViewColumn).ValueMember;
-                comboBoxValue.DisplayMember = ((DataGridViewComboBoxColumn)DataGridViewColumn).DisplayMember;
-                comboBoxValue.DataSource = ((DataGridViewComboBoxColumn)DataGridViewColumn).DataSource;
-            }
-            else {
-                comboBoxValue.ValueMember = DataGridViewColumn.DataPropertyName;
-                comboBoxValue.DisplayMember = DataGridViewColumn.DataPropertyName;
-                RefreshValues();
-            }
-            FilterHost.RegisterComboBox(comboBoxOperator);
-            FilterHost.RegisterComboBox(comboBoxValue);
+    /// <summary>
+    ///     Builds the filter expression and raises the FilterExpressionBuilding event
+    /// </summary>
+    /// <param name="sender">The event source.</param>
+    /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs" /> instance containing the event data.</param>
+    /// <remarks>
+    ///     Override <b>OnFilterExpressionBuilding</b> to provide a filter expression construction
+    ///     logic and to set the values of the <see cref="DgvBaseColumnFilter.FilterExpression" /> and
+    ///     <see cref="DgvBaseColumnFilter.FilterCaption" /> properties.
+    ///     The <see cref="DgvFilterManager" /> will use these properties in constructing the whole filter expression and to
+    ///     change the header text of the filtered column.
+    ///     Otherwise, you can create an event handler and set the <i>Cancel</i> property of event argument to true, to skip
+    ///     standard filter expression building logic.
+    /// </remarks>
+    protected override void OnFilterExpressionBuilding(object sender, CancelEventArgs e)
+    {
+        base.OnFilterExpressionBuilding(sender, e);
+        if (e.Cancel)
+        {
+            FilterManager.RebuildFilter();
+            return;
         }
 
-        /// <summary>
-        /// For non-combobox columns, refreshes the list of the <b>DataView</b> values in the column.
-        /// </summary>
-        public void RefreshValues() {
-            if (!(DataGridViewColumn is DataGridViewComboBoxColumn)) {
-                DataTable DistinctDataTable = BoundDataView.ToTable(true, new string[] { DataGridViewColumn.DataPropertyName });
-                DistinctDataTable.DefaultView.Sort = DataGridViewColumn.DataPropertyName;
-                comboBoxValue.DataSource = DistinctDataTable;
-            }
+        var ResultFilterExpression = "";
+        var ResultFilterCaption = OriginalDataGridViewColumnHeaderText;
+
+        // Managing the NULL and NOT NULL cases which are type-independent
+        if (ComboBoxOperator.Text == "= ï¿½")
+            ResultFilterExpression = GetNullCondition(DataGridViewColumn.DataPropertyName);
+        if (ComboBoxOperator.Text == "<> ï¿½")
+            ResultFilterExpression = GetNotNullCondition(DataGridViewColumn.DataPropertyName);
+
+        if (ResultFilterExpression != "")
+        {
+            FilterExpression = ResultFilterExpression;
+            FilterCaption = ResultFilterCaption + "\n " + ComboBoxOperator.Text;
+            FilterManager.RebuildFilter();
+            return;
         }
 
+        var FilterValue = ComboBoxValue.SelectedValue;
+        var FormattedValue = "";
 
-        /// <summary>
-        /// Builds the filter expression and raises the FilterExpressionBuilding event
-        /// </summary>
-        /// <param name="sender">The event source.</param>
-        /// <param name="e">The <see cref="System.ComponentModel.CancelEventArgs"/> instance containing the event data.</param>
-        /// <remarks>
-        /// Override <b>OnFilterExpressionBuilding</b> to provide a filter expression construction
-        /// logic and to set the values of the <see cref="DgvBaseColumnFilter.FilterExpression"/> and <see cref="DgvBaseColumnFilter.FilterCaption"/> properties.
-        /// The <see cref="DgvFilterManager"/> will use these properties in constructing the whole filter expression and to change the header text of the filtered column.
-        /// Otherwise, you can create an event handler and set the <i>Cancel</i> property of event argument to true, to skip standard filter expression building logic.
-        /// </remarks>
-        protected override void OnFilterExpressionBuilding(object sender, CancelEventArgs e){
-         	base.OnFilterExpressionBuilding(sender, e);
-            if (e.Cancel) {
-                FilterManager.RebuildFilter();
-                return;
-            } 
-
-            string ResultFilterExpression = "";
-            string ResultFilterCaption = OriginalDataGridViewColumnHeaderText ;
-
-            // Managing the NULL and NOT NULL cases which are type-independent
-            if (comboBoxOperator.Text == "= Ø") ResultFilterExpression = GetNullCondition(DataGridViewColumn.DataPropertyName);
-            if (comboBoxOperator.Text == "<> Ø") ResultFilterExpression = GetNotNullCondition(DataGridViewColumn.DataPropertyName);
-
-            if (ResultFilterExpression != "") {
-                FilterExpression = ResultFilterExpression;
-                FilterCaption = ResultFilterCaption + "\n " + comboBoxOperator.Text;
-                FilterManager.RebuildFilter();
-                return;
-            }
-
-            object FilterValue = comboBoxValue.SelectedValue;
-            string FormattedValue = "";
-            
-            if (ColumnDataType == typeof(string)) {
-                // Managing the string-column case
-                string EscapedFilterValue = StringEscape(FilterValue.ToString());
-                ResultFilterExpression = DataGridViewColumn.DataPropertyName + " " + comboBoxOperator.Text + "'" + EscapedFilterValue + "'";
-                ResultFilterCaption += "\n" + comboBoxOperator.Text + " " + comboBoxValue.Text;
-            }
-            else {
-                // Managing the other cases
-                FormattedValue = FormatValue(FilterValue, ColumnDataType);
-                if (FormattedValue != "") {
-                    ResultFilterExpression = DataGridViewColumn.DataPropertyName + " " + comboBoxOperator.Text + FormattedValue ;
-                    ResultFilterCaption += "\n" + comboBoxOperator.Text + " " + comboBoxValue.Text ;
-                }
-
-            }
-            if (ResultFilterExpression != "") {
-                FilterExpression = ResultFilterExpression;
-                FilterCaption = ResultFilterCaption;
-                FilterManager.RebuildFilter();
+        if (ColumnDataType == typeof(string))
+        {
+            // Managing the string-column case
+            var EscapedFilterValue = StringEscape(FilterValue.ToString());
+            ResultFilterExpression = DataGridViewColumn.DataPropertyName + " " + ComboBoxOperator.Text + "'" +
+                                     EscapedFilterValue + "'";
+            ResultFilterCaption += "\n" + ComboBoxOperator.Text + " " + ComboBoxValue.Text;
+        }
+        else
+        {
+            // Managing the other cases
+            FormattedValue = FormatValue(FilterValue, ColumnDataType);
+            if (FormattedValue != "")
+            {
+                ResultFilterExpression =
+                    DataGridViewColumn.DataPropertyName + " " + ComboBoxOperator.Text + FormattedValue;
+                ResultFilterCaption += "\n" + ComboBoxOperator.Text + " " + ComboBoxValue.Text;
             }
         }
 
-        private void onFilterChanged(object sender, EventArgs e){
-            if (!FilterApplySoon || !this.Visible) return;
-            Active = true;
-            FilterExpressionBuild();
-
+        if (ResultFilterExpression != "")
+        {
+            FilterExpression = ResultFilterExpression;
+            FilterCaption = ResultFilterCaption;
+            FilterManager.RebuildFilter();
         }
+    }
 
-
-
-
-
+    private void onFilterChanged(object sender, EventArgs e)
+    {
+        if (!FilterApplySoon || !Visible) return;
+        Active = true;
+        FilterExpressionBuild();
     }
 }
