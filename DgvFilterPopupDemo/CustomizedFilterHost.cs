@@ -1,8 +1,7 @@
-using DgvFilterPopup;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-
+using DgvFilterPopup;
 
 namespace DgvFilterPopupDemo
 {
@@ -11,14 +10,16 @@ namespace DgvFilterPopupDemo
         public CustomizedFilterHost()
         {
             InitializeComponent();
-            this.Region = BitmapToRegion((Bitmap)this.BackgroundImage, Color.FromArgb(255, 0, 0));
-            CurrentColumnFilterChanged += new EventHandler(CloudFilterHost_CurrentColumnFilterChanged);
+            Region = BitmapToRegion((Bitmap)BackgroundImage, Color.FromArgb(255, 0, 0));
+            CurrentColumnFilterChanged += CloudFilterHost_CurrentColumnFilterChanged;
             lblDelete.BackColor = Color.Transparent;
             lblDeleteAll.BackColor = Color.Transparent;
             lblOK.BackColor = Color.Transparent;
         }
 
-        void CloudFilterHost_CurrentColumnFilterChanged(object sender, EventArgs e)
+        public override Control FilterClientArea => panel1;
+
+        private void CloudFilterHost_CurrentColumnFilterChanged(object sender, EventArgs e)
         {
             label1.Text = CurrentColumnFilter.OriginalDataGridViewColumnHeaderText;
         }
@@ -28,14 +29,6 @@ namespace DgvFilterPopupDemo
             //This empty override of the DoAutoFit force the fixed size of the host.
             //We just allow alignment
             AlignFilter();
-        }
-
-        public override Control FilterClientArea
-        {
-            get
-            {
-                return panel1;
-            }
         }
 
         private void lblDelete_Click(object sender, EventArgs e)

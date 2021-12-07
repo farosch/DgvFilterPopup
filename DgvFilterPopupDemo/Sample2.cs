@@ -1,30 +1,30 @@
-using DgvFilterPopup;
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using DgvFilterPopup;
 
 namespace DgvFilterPopupDemo
 {
-    public partial class Sample2 : DgvFilterPopupDemo.Sample0
+    public partial class Sample2 : Sample0
     {
+        private DgvDateColumnFilter OrderDate;
+
         public Sample2()
         {
             InitializeComponent();
         }
 
-        DgvDateColumnFilter OrderDate;
-
         private void Sample2_Load(object sender, EventArgs e)
         {
             InitGrid();
 
-            DgvFilterManager fm = new DgvFilterManager
+            var fm = new DgvFilterManager
             {
                 DataGridView = dataGridView1 //after this line, column filters are created
             };
 
             // Get the created column filter for OrderDate column
-            OrderDate = ((DgvDateColumnFilter)fm["OrderDate"]);
+            OrderDate = (DgvDateColumnFilter)fm["OrderDate"];
 
             //Add some new operators
             OrderDate.ComboBoxOperator.Items.Insert(0, "This year");
@@ -34,22 +34,24 @@ namespace DgvFilterPopupDemo
             //Change the size to accomodate the length of the new operators
             OrderDate.ComboBoxOperator.Width += 30;
             OrderDate.DateTimePickerValue.Width -= 30;
-            OrderDate.DateTimePickerValue.Location = new Point(OrderDate.DateTimePickerValue.Left + 30, OrderDate.DateTimePickerValue.Top);
-            OrderDate.FilterExpressionBuilding += new CancelEventHandler(OrderDate_FilterExpressionBuilding);
-
+            OrderDate.DateTimePickerValue.Location = new Point(OrderDate.DateTimePickerValue.Left + 30,
+                OrderDate.DateTimePickerValue.Top);
+            OrderDate.FilterExpressionBuilding += OrderDate_FilterExpressionBuilding;
         }
 
-        void OrderDate_FilterExpressionBuilding(object sender, CancelEventArgs e)
+        private void OrderDate_FilterExpressionBuilding(object sender, CancelEventArgs e)
         {
-            int index = OrderDate.ComboBoxOperator.SelectedIndex;
+            var index = OrderDate.ComboBoxOperator.SelectedIndex;
             if (index < 3)
-            { // the first 3 are the new operators
-                int year = (DateTime.Today.Year - index);
-                OrderDate.FilterExpression = $"(OrderDate>='{year.ToString()}-1-1' AND OrderDate<='{year.ToString()}-12-31') ";
-                OrderDate.FilterCaption = $"{OrderDate.OriginalDataGridViewColumnHeaderText}\n = year {year.ToString()}";
+            {
+                // the first 3 are the new operators
+                var year = DateTime.Today.Year - index;
+                OrderDate.FilterExpression =
+                    $"(OrderDate>='{year.ToString()}-1-1' AND OrderDate<='{year.ToString()}-12-31') ";
+                OrderDate.FilterCaption =
+                    $"{OrderDate.OriginalDataGridViewColumnHeaderText}\n = year {year.ToString()}";
                 e.Cancel = true;
             }
         }
     }
 }
-

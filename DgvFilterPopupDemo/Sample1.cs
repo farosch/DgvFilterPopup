@@ -1,9 +1,9 @@
-using DgvFilterPopup;
 using System;
+using DgvFilterPopup;
 
 namespace DgvFilterPopupDemo
 {
-    public partial class Sample1 : DgvFilterPopupDemo.Sample0
+    public partial class Sample1 : Sample0
     {
         public Sample1()
         {
@@ -17,4 +17,3 @@ namespace DgvFilterPopupDemo
         }
     }
 }
-

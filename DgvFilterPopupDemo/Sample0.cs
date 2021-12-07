@@ -1,13 +1,12 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using DgvFilterPopupDemo.Properties;
 
 namespace DgvFilterPopupDemo
 {
     public partial class Sample0 : Form
     {
-
-
         public Sample0()
         {
             InitializeComponent();
@@ -15,8 +14,8 @@ namespace DgvFilterPopupDemo
 
         public DataTable GetData(string strSQL)
         {
-            OleDbDataAdapter DataAdapter = new OleDbDataAdapter(strSQL, Properties.Settings.Default.SampleDBConnectionString);
-            DataTable dtable = new DataTable();
+            var DataAdapter = new OleDbDataAdapter(strSQL, Settings.Default.SampleDBConnectionString);
+            var dtable = new DataTable();
             DataAdapter.Fill(dtable);
             DataAdapter.SelectCommand.Connection.Close();
             return dtable;
@@ -24,7 +23,7 @@ namespace DgvFilterPopupDemo
 
         public void InitGrid()
         {
-            DataGridViewComboBoxColumn EmployeeID = (DataGridViewComboBoxColumn)dataGridView1.Columns["EmployeeID"];
+            var EmployeeID = (DataGridViewComboBoxColumn)dataGridView1.Columns["EmployeeID"];
             EmployeeID.DataPropertyName = "EmployeeID";
             EmployeeID.ValueMember = "EmployeeID";
             EmployeeID.DisplayMember = "FullName";
@@ -35,4 +34,3 @@ namespace DgvFilterPopupDemo
         }
     }
 }
-

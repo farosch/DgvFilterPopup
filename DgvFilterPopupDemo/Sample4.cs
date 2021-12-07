@@ -1,10 +1,9 @@
-using DgvFilterPopup;
 using System;
-using System.Drawing;
+using DgvFilterPopup;
 
 namespace DgvFilterPopupDemo
 {
-    public partial class Sample4 : DgvFilterPopupDemo.Sample0
+    public partial class Sample4 : Sample0
     {
         public Sample4()
         {
@@ -14,21 +13,20 @@ namespace DgvFilterPopupDemo
         private void Sample4_Load(object sender, EventArgs e)
         {
             InitGrid();
-            DgvFilterManager fm = new DgvFilterManager();
+            var fm = new DgvFilterManager();
             fm.FilterHost = new CustomizedFilterHost();
             fm.DataGridView = dataGridView1;
             // Customize the popup positioning.
-            fm.PopupShowing += new ColumnFilterEventHandler(fm_PopupShowing);
+            fm.PopupShowing += fm_PopupShowing;
         }
 
-        void fm_PopupShowing(object sender, ColumnFilterEventArgs e)
+        private void fm_PopupShowing(object sender, ColumnFilterEventArgs e)
         {
-            DgvFilterManager fm = ((DgvFilterManager)sender);
-            Rectangle HeaderRectangle = fm.DataGridView.GetCellDisplayRectangle(e.Column.Index, -1, true);
+            var fm = (DgvFilterManager)sender;
+            var HeaderRectangle = fm.DataGridView.GetCellDisplayRectangle(e.Column.Index, -1, true);
             //Show the popup under the column header
             fm.FilterHost.Popup.Show(fm.DataGridView, HeaderRectangle.Left, HeaderRectangle.Bottom);
             e.Handled = true;
         }
     }
 }
-

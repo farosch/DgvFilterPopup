@@ -12,34 +12,32 @@ namespace DgvFilterPopupDemo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Sample1 f = new Sample1();
+            var f = new Sample1();
             f.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Sample2 f = new Sample2();
+            var f = new Sample2();
             f.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Sample3 f = new Sample3();
+            var f = new Sample3();
             f.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Sample4 f = new Sample4();
+            var f = new Sample4();
             f.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Sample5 f = new Sample5();
+            var f = new Sample5();
             f.Show();
         }
-
-
     }
 }
