@@ -13,6 +13,10 @@ on:
 jobs:
   build:
 
+    strategy:
+      matrix:
+        configuration: [Release]
+
     runs-on: windows-latest
 
     steps:
