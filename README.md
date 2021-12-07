@@ -1,16 +1,13 @@
 # DgvFilterPopup
 Based on the original work of [Vincenzo Rossi](https://www.codeproject.com/script/Membership/View.aspx?mid=3713668)'s [DgvFilterPopup](https://www.codeproject.com/Articles/33786/DataGridView-Filter-Popup).
-* [License](LICENSE.md)
-* [Changelog](CHANGELOG.md)
-
----
 
 ![picture alt](Images/Overview.png)
 
 ## Builds
-Main branch: [![Build and Test](https://github.com/farosch/DgvFilterPopup/actions/workflows/build_and_test.yml/badge.svg?branch=main)](https://github.com/farosch/DgvFilterPopup/actions/workflows/build_and_test.yml)
-Develop branch: [![Build and Test](https://github.com/farosch/DgvFilterPopup/actions/workflows/build_and_test.yml/badge.svg?branch=develop)](https://github.com/farosch/DgvFilterPopup/actions/workflows/build_and_test.yml)
-
+| Branch | Status |
+| --- | --- |
+| main | [![Build](https://github.com/farosch/DgvFilterPopup/actions/workflows/build_and_test.yml/badge.svg?branch=main)](https://github.com/farosch/DgvFilterPopup/actions/workflows/build_and_test.yml) |
+| develop | [![Build](https://github.com/farosch/DgvFilterPopup/actions/workflows/build_and_test.yml/badge.svg?branch=develop)](https://github.com/farosch/DgvFilterPopup/actions/workflows/build_and_test.yml) |
 
 ## Installation
 Simply install the [nuget package](https://www.nuget.org/packages/DgvFilterPopup/): ![NuGet](https://img.shields.io/nuget/v/DgvFilterPopup?style=flat-square)
