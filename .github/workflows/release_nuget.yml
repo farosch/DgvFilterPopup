@@ -41,11 +41,14 @@ name: Release Nuget
 on:
   pull_request:
     branches: [main]
+    types: [closed]
 
 jobs:
 
   build:
 
+    if: github.event.pull_request.merged == true
+    
     strategy:
       matrix:
         configuration: [Release]
