@@ -42,11 +42,9 @@ on:
   push:
     branches:
       - '**'      # matches every branch
-      - '!main'   # excludes master
   pull_request:
     branches:
       - '**'      # matches every branch
-      - '!main'   # excludes master
 
 jobs:
 
