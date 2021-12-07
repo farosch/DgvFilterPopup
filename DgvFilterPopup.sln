@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29521.150
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DgvFilterPopupDemo", "DgvFilterPopupDemo\DgvFilterPopupDemo.csproj", "{43EE2A60-830E-4FFD-B5CB-B397D94833A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DgvFilterPopup", "DgvFilterPopup\DgvFilterPopup.csproj", "{838FC1D5-2B1B-4454-9A94-077CEF4EE27F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DgvFilterPopup", "DgvFilterPopup\DgvFilterPopup.csproj", "{838FC1D5-2B1B-4454-9A94-077CEF4EE27F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,7 +26,6 @@ Global
 		{43EE2A60-830E-4FFD-B5CB-B397D94833A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43EE2A60-830E-4FFD-B5CB-B397D94833A3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{43EE2A60-830E-4FFD-B5CB-B397D94833A3}.Release|x64.ActiveCfg = Release|Any CPU
-		{43EE2A60-830E-4FFD-B5CB-B397D94833A3}.Release|x64.Build.0 = Release|Any CPU
 		{43EE2A60-830E-4FFD-B5CB-B397D94833A3}.Release|x86.ActiveCfg = Release|Any CPU
 		{43EE2A60-830E-4FFD-B5CB-B397D94833A3}.Release|x86.Build.0 = Release|Any CPU
 		{838FC1D5-2B1B-4454-9A94-077CEF4EE27F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
